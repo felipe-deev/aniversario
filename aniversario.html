@@ -180,7 +180,6 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;heigh
     var h=Math.floor(d/3600), m=Math.floor(d%3600/60), s=d%60;
     $('h').textContent=pad(h); $('m').textContent=pad(m); $('s').textContent=pad(s);
   }
-  tick(); setInterval(tick,1000);
 
   // Corações e confete
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -207,6 +206,8 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;heigh
     parts=parts.filter(function(p){return p.life<160 && p.y<innerHeight+40});
     if(parts.length) requestAnimationFrame(loop); else {running=false;ctx.clearRect(0,0,innerWidth,innerHeight)}
   }
+  tick(); setInterval(tick,1000);
+
   $('btn').addEventListener('click',function(){
     $('secret').hidden=false; burst(160);
     this.textContent='De novo! 💖';
